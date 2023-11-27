@@ -1,39 +1,8 @@
-﻿/* global clearInterval, console, CustomFunctions, setInterval */
-
-/**
- * Adds two numbers.
- * @customfunction
- * @param first First number
- * @param second Second number
- * @returns The sum of the two numbers.
- */
-export function add(first: number, second: number): number {
-  return first + second;
-}
-
-/**
- * Displays the current time once a second.
- * @customfunction
- * @param invocation Custom function handler
- */
-export function clock(invocation: CustomFunctions.StreamingInvocation<string>): void {
-  const timer = setInterval(() => {
-    const time = currentTime();
-    invocation.setResult(time);
-  }, 1000);
-
-  invocation.onCanceled = () => {
-    clearInterval(timer);
-  };
-}
-
-/**
- * Returns the current time.
- * @returns String with the current time formatted for the current locale.
- */
-export function currentTime(): string {
-  return new Date().toLocaleTimeString();
-}
+﻿/* eslint-disable no-unreachable */
+/* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* global clearInterval, console, CustomFunctions, setInterval */
+import { LoginRequest, LoginResponse } from "./reqres";
 
 /**
  * Increments a value once a second.
@@ -54,13 +23,39 @@ export function increment(incrementBy: number, invocation: CustomFunctions.Strea
 }
 
 /**
- * Writes a message to console.log().
- * @customfunction LOG
- * @param message String to write.
- * @returns String to write.
+ * Custom function that sends a login request to the named pipe server and waits for a response.
+ * @customfunction LOGIN
+ * @param username User's username
+ * @param password User's password
+ * @returns number representing http status response of auth request
  */
-export function logMessage(message: string): string {
-  console.log(message);
+export async function login(username: string, password: string,) {
+  let request: LoginRequest = 
+  {
+    type: "Login",
+    username,
+    password,
+  };
+  console.log("attempting login");
+  // eslint-disable-next-line no-undef
+  let response = await fetch("http://localhost:4200/process", {
+    method: "POST",
+    body: JSON.stringify(request),
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+  });
 
-  return message;
+  
+  if (!response.ok) {
+    console.log("err ${response.status}");
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  console.log("server responded");
+  let loginResponse: LoginResponse = await response.json();
+  console.log(loginResponse.status)
+  //invocation.setResult(String(loginResponse.status));
+  return loginResponse.status;
 }
