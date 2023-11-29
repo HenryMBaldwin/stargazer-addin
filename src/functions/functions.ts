@@ -64,7 +64,7 @@ export async function login(username: string, password: string,) {
  * Sends a query request to the http server and returns the response.
  * @customfunction QUERY
  * @param id User's username
- * @param args User's password
+ * @param {string[]} args User's password
  * @returns number spill array representing the return data of of the query or an error message
  */
 
@@ -104,7 +104,7 @@ export async function query(id: string, args: string[]) {
  * Sends a get query prompts request to the http server and returnes the response.
  * @customfunction GET_QUERY_PROMPTS
  * @param id User's username
- * @returns number spill array representing the return data of of the query or an error message
+ * @returns {string[][]} number spill array representing the return data of of the query or an error message
  */
 export async function get_query_prompts(id: string) {
   let request: reqres.GetQueryPromptsRequest = 
@@ -135,5 +135,23 @@ export async function get_query_prompts(id: string) {
   console.log(queryResponse.status)
   
   //TODO: convert json response to spill array
-  return queryResponse.prompts;
+  try {
+
+      const formattedArray: string[][] = [];
+      
+      let prompts = queryResponse.prompts;
+      let prompts_json = JSON.parse(prompts);
+      prompts_json.forEach(pr => {
+      //let pr = JSON.parse(prompt);
+      formattedArray.push([pr.prompt]);
+      formattedArray.push([pr.promptDescription]);
+      formattedArray.push(['']);
+    });
+
+    return formattedArray;
+  }
+  catch (error) {
+    console.log('Error parsing JSON: ', error);
+    return "error";
+  }
 }
