@@ -2,7 +2,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* global clearInterval, console, CustomFunctions, setInterval */
-import { LoginRequest, LoginResponse } from "./reqres";
+import * as reqres from "./reqres";
 
 /**
  * Increments a value once a second.
@@ -23,14 +23,14 @@ export function increment(incrementBy: number, invocation: CustomFunctions.Strea
 }
 
 /**
- * Custom function that sends a login request to the named pipe server and waits for a response.
+ * Sends a login request to the http server and returns the response.
  * @customfunction LOGIN
  * @param username User's username
  * @param password User's password
  * @returns number representing http status response of auth request
  */
 export async function login(username: string, password: string,) {
-  let request: LoginRequest = 
+  let request: reqres.LoginRequest = 
   {
     type: "Login",
     username,
@@ -54,8 +54,86 @@ export async function login(username: string, password: string,) {
   }
 
   console.log("server responded");
-  let loginResponse: LoginResponse = await response.json();
+  let loginResponse: reqres.LoginResponse = await response.json();
   console.log(loginResponse.status)
   //invocation.setResult(String(loginResponse.status));
   return loginResponse.status;
+}
+
+/**
+ * Sends a query request to the http server and returns the response.
+ * @customfunction QUERY
+ * @param id User's username
+ * @param args User's password
+ * @returns number spill array representing the return data of of the query or an error message
+ */
+
+export async function query(id: string, args: string[]) {
+  let request: reqres.QueryRequest = 
+  {
+    type: "Query",
+    id,
+    args,
+  };
+  console.log("attempting query");
+  // eslint-disable-next-line no-undef
+  let response = await fetch("http://localhost:4200/process", {
+    method: "POST",
+    body: JSON.stringify(request),
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+  });
+
+  
+  if (!response.ok) {
+    console.log("err ${response.status}");
+    //not actually sure what happens on the excel side if an error is thrown
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  console.log("server responded");
+  let queryResponse: reqres.QueryResponse = await response.json();
+  console.log(queryResponse.status)
+  //TODO: convert json response to spill array
+  return queryResponse.result;
+}
+
+/**
+ * Sends a get query prompts request to the http server and returnes the response.
+ * @customfunction GET_QUERY_PROMPTS
+ * @param id User's username
+ * @returns number spill array representing the return data of of the query or an error message
+ */
+export async function get_query_prompts(id: string) {
+  let request: reqres.GetQueryPromptsRequest = 
+  {
+    type: "GetQueryPrompts",
+    id,
+  };
+  console.log("attempting query");
+  // eslint-disable-next-line no-undef
+  let response = await fetch("http://localhost:4200/process", {
+    method: "POST",
+    body: JSON.stringify(request),
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+  });
+
+  
+  if (!response.ok) {
+    console.log("err ${response.status}");
+    //not actually sure what happens on the excel side if an error is thrown
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  console.log("server responded");
+  let queryResponse: reqres.GetQueryPromptsResponse = await response.json();
+  console.log(queryResponse.status)
+  
+  //TODO: convert json response to spill array
+  return queryResponse.prompts;
 }
