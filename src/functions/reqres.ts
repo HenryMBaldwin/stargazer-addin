@@ -36,5 +36,5 @@ export interface GetQueryPromptsRequest {
 export interface GetQueryPromptsResponse {
   type: "GetQueryPrompts";
   status: number;
-  prompts: string[];
+  prompts: string;
 }
