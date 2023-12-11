@@ -65,7 +65,7 @@ export async function login(username: string, password: string,) {
  * @customfunction QUERY
  * @param id User's username
  * @param {string[]} args User's password
- * @returns number spill array representing the return data of of the query or an error message
+ * @returns {string[][]} number spill array representing the return data of of the query or an error message
  */
 
 export async function query(id: string, args: string[]) {
@@ -97,7 +97,30 @@ export async function query(id: string, args: string[]) {
   let queryResponse: reqres.QueryResponse = await response.json();
   console.log(queryResponse.status)
   //TODO: convert json response to spill array
-  return queryResponse.result;
+  
+  const resultArray: string[][] = [];
+
+  const resultJson = JSON.parse(queryResponse.result) as Record<string, string>[];
+
+  if (resultJson.length === 0) {
+    return ["Error: Empty query result"];
+  }
+  try{
+    const keys = Object.keys(resultJson[0]);
+
+    for (const key of keys) {
+      const valuesArray = resultJson.map((row) => row[key]);
+      resultArray.push(valuesArray);
+    }
+
+    console.table(resultArray);
+    return resultArray;
+  }  
+  catch (error) {
+    console.log('Error parsing JSON: ', error);
+    return [["error"]];
+
+}
 }
 
 /**
@@ -134,7 +157,7 @@ export async function get_query_prompts(id: string) {
   let queryResponse: reqres.GetQueryPromptsResponse = await response.json();
   console.log(queryResponse.status)
   
-  //TODO: convert json response to spill array
+  
   try {
 
       const formattedArray: string[][] = [];
