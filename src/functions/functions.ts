@@ -108,8 +108,11 @@ export async function query(id: string, args: string[]) {
   try{
     const keys = Object.keys(resultJson[0]);
 
-    for (const key of keys) {
-      const valuesArray = resultJson.map((row) => row[key]);
+    for (const entry of resultJson) {
+      var valuesArray = [];
+        for (const key of keys) {
+          valuesArray.push(entry[key]);
+        }
       resultArray.push(valuesArray);
     }
 
