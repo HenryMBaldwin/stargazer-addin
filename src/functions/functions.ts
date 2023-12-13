@@ -65,7 +65,7 @@ export async function login(username: string, password: string,) {
  * @customfunction QUERY
  * @param id User's username
  * @param {string[]} args User's password
- * @returns {string[][]} spill array representing the return data of of the query or an error message
+ * @returns {string[][]} number spill array representing the return data of of the query or an error message
  */
 
 export async function query(id: string, args: string[]) {
@@ -110,7 +110,7 @@ export async function query(id: string, args: string[]) {
     
     var keysArray = [];
     for (const key in keys) {
-      keysArray.push(key);
+      keysArray.push(keys[key]);
     }
     resultArray.push(keysArray);
     for (const entry of resultJson) {
@@ -172,7 +172,7 @@ export async function get_query_prompts(id: string) {
       
       let prompts = queryResponse.prompts;
       let prompts_json = JSON.parse(prompts);
-      prompts_json.forEach(pr => {
+      prompts_json.forEach((pr: { prompt: string; promptDescription: string; }) => {
       //let pr = JSON.parse(prompt);
       formattedArray.push([pr.prompt]);
       formattedArray.push([pr.promptDescription]);
