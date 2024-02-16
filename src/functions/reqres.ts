@@ -18,6 +18,7 @@ export interface LoginResponse {
 export interface QueryRequest {
   type: "Query";
   id: string;
+  cache: boolean;
   args: string[];
 }
 

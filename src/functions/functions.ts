@@ -22,57 +22,60 @@ export function increment(incrementBy: number, invocation: CustomFunctions.Strea
   };
 }
 
-/**
- * Sends a login request to the http server and returns the response.
- * @customfunction LOGIN
- * @param username User's username
- * @param password User's password
- * @returns number representing http status response of auth request
- */
-export async function login(username: string, password: string,) {
-  let request: reqres.LoginRequest = 
-  {
-    type: "Login",
-    username,
-    password,
-  };
-  console.log("attempting login");
-  // eslint-disable-next-line no-undef
-  let response = await fetch("http://localhost:4200/process", {
-    method: "POST",
-    body: JSON.stringify(request),
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-  });
+// /**
+//  * Sends a login request to the http server and returns the response.
+//  * @customfunction LOGIN
+//  * @param username User's username
+//  * @param password User's password
+//  * @returns number representing http status response of auth request
+//  */
+// export async function login(username: string, password: string,) {
+//   let request: reqres.LoginRequest = 
+//   {
+//     type: "Login",
+//     username,
+//     password,
+//   };
+//   console.log("attempting login");
+//   // eslint-disable-next-line no-undef
+//   let response = await fetch("http://localhost:4200/process", {
+//     method: "POST",
+//     body: JSON.stringify(request),
+//     headers: {
+//       "Content-Type": "application/json",
+//       Accept: "application/json",
+//     },
+//   });
 
   
-  if (!response.ok) {
-    console.log("err ${response.status}");
-    throw new Error(`HTTP error! status: ${response.status}`);
-  }
+//   if (!response.ok) {
+//     console.log("err ${response.status}");
+//     throw new Error(`HTTP error! status: ${response.status}`);
+//   }
 
-  console.log("server responded");
-  let loginResponse: reqres.LoginResponse = await response.json();
-  console.log(loginResponse.status)
-  //invocation.setResult(String(loginResponse.status));
-  return loginResponse.status;
-}
+//   console.log("server responded");
+//   let loginResponse: reqres.LoginResponse = await response.json();
+//   console.log(loginResponse.status)
+//   //invocation.setResult(String(loginResponse.status));
+//   return loginResponse.status;
+// }
 
 /**
- * Sends a query request to the http server and returns the response.
+ * Sends a query request to the http server and returns the .response.
  * @customfunction QUERY
  * @param id User's username
+ * @param cache boolean representing whether to used cached query results
  * @param {string[]} args User's password
  * @returns {string[][]} number spill array representing the return data of of the query or an error message
  */
 
-export async function query(id: string, args: string[]) {
+export async function query(id: string, cache: boolean, args: string[]) {
+  console.log("args: ", args);
   let request: reqres.QueryRequest = 
   {
     type: "Query",
     id,
+    cache,
     args,
   };
   console.log("attempting query");
