@@ -22,6 +22,8 @@ This has been killing me so I'm writing the steps down
 
 12. 'npm run build' 
 
-13. 'npm run start:desktop' and pray
+13. 'npm run start:desktop'
+
+14. pray
 
 Why Microsoft? Why does it have to be so hard?
