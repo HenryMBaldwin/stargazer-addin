@@ -6,7 +6,7 @@ This has been killing me so I'm writing the steps down
 
 1. make sure you've run nvm use v18.18.2
 
-2. make sure you've cleared add-in cache in excel. From Excel:
+2. make sure you've cleared add-in cache in Excel. From Excel:
     1. File
     2. Options
     3. Trust Center
@@ -17,6 +17,8 @@ This has been killing me so I'm writing the steps down
     8. OK
     9. OK
     10. Fully shut down Excel
+        
+(must be done every time as the box unchecks upon restart)
 
 11. make sure there are no node.js processes running from task manager (or close down previous web pack cmd windows)
 
@@ -25,5 +27,7 @@ This has been killing me so I'm writing the steps down
 13. 'npm run start:desktop'
 
 14. pray
+
+If that doesn't work, it may also be worth trying to clear the dist directory.
 
 Why Microsoft? Why does it have to be so hard?
