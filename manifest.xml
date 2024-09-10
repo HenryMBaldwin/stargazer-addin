@@ -8,7 +8,7 @@
   <Description DefaultValue="Excel Add-in for Stargazer"/>
   <IconUrl DefaultValue="https://henrymbaldwin.github.io/stargazer-addin/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://henrymbaldwin.github.io/stargazer-addin/assets/icon-64.png"/>
-  <SupportUrl DefaultValue="https://www.github.com/henrymbaldwin/stargazer-addin"/>
+  <SupportUrl DefaultValue="https://www.github.com/henrymbaldwin/stargazer-addin/"/>
   <AppDomains>
     <AppDomain>https://henrymbaldwin.github.io/</AppDomain>
   </AppDomains>
@@ -85,14 +85,14 @@
     <Resources>
       <bt:Images>
         <bt:Image id="Icon.16x16" DefaultValue="https://henrymbaldwin.github.io/stargazer-addin/assets/icon-16.png"/>
-        <bt:Image id="Icon.32x32" DefaultValue="https://henrymbaldwin.github.io/assets/icon-32.png"/>
-        <bt:Image id="Icon.80x80" DefaultValue="https://henrymbaldwin.github.io/assets/icon-80.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="https://henrymbaldwin.github.io/stargazer-addin/assets/icon-32.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://henrymbaldwin.github.io/stargazer-addin/assets/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="Functions.Script.Url" DefaultValue="https://henrymbaldwin.github.io/public/functions.js"/>
-        <bt:Url id="Functions.Metadata.Url" DefaultValue="https://henrymbaldwin.github.io/public/functions.json"/>
+        <bt:Url id="Functions.Script.Url" DefaultValue="https://henrymbaldwin.github.io/stargazer-addin/functions.js"/>
+        <bt:Url id="Functions.Metadata.Url" DefaultValue="https://henrymbaldwin.github.io/stargazer-addin/functions.json"/>
         <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812"/>
-        <bt:Url id="Taskpane.Url" DefaultValue="https://henrymbaldwin.github.io/taskpane.html"/>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://henrymbaldwin.github.io/stargazer-addin/taskpane.html"/>
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="Functions.Namespace" DefaultValue="Stargazer"/>

@@ -10,17 +10,17 @@ import * as reqres from "./reqres";
  * @param incrementBy Amount to increment
  * @param invocation Custom function handler
  */
-export function increment(incrementBy: number, invocation: CustomFunctions.StreamingInvocation<number>): void {
-  let result = 0;
-  const timer = setInterval(() => {
-    result += incrementBy;
-    invocation.setResult(result);
-  }, 1000);
+// export function increment(incrementBy: number, invocation: CustomFunctions.StreamingInvocation<number>): void {
+//   let result = 0;
+//   const timer = setInterval(() => {
+//     result += incrementBy;
+//     invocation.setResult(result);
+//   }, 1000);
 
-  invocation.onCanceled = () => {
-    clearInterval(timer);
-  };
-}
+//   invocation.onCanceled = () => {
+//     clearInterval(timer);
+//   };
+// }
 
 // /**
 //  * Sends a login request to the http server and returns the response.
