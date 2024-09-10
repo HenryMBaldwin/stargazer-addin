@@ -11,6 +11,6 @@ make sure you've cleared add in cache in excel
 
 make sure there are no node.js processes running
 
-npm run build 
+npm run build to refresh dist directory
 
 npm run start:desktop and pray

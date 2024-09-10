@@ -4,7 +4,7 @@
   <Version>1.0.0.0</Version>
   <ProviderName>Stargazer</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="stargazer-addin"/>
+  <DisplayName DefaultValue="Stargazer"/>
   <Description DefaultValue="Excel Add-in for Stargazer"/>
   <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>
