@@ -2,24 +2,6 @@
     "functions": [
         {
             "description": "Increments a value once a second.",
-            "id": "INCREMENT",
-            "name": "INCREMENT",
-            "options": {
-                "stream": true
-            },
-            "parameters": [
-                {
-                    "description": "Amount to increment",
-                    "name": "incrementBy",
-                    "type": "number"
-                }
-            ],
-            "result": {
-                "type": "number"
-            }
-        },
-        {
-            "description": "Sends a query request to the http server and returns the .response.",
             "id": "QUERY",
             "name": "QUERY",
             "parameters": [
