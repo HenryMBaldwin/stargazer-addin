@@ -4,12 +4,12 @@
 /* global clearInterval, console, CustomFunctions, setInterval */
 import * as reqres from "./reqres";
 
-/**
- * Increments a value once a second.
- * @customfunction
- * @param incrementBy Amount to increment
- * @param invocation Custom function handler
- */
+// /**
+//  * Increments a value once a second.
+//  * @customfunction
+//  * @param incrementBy Amount to increment
+//  * @param invocation Custom function handler
+//  */
 // export function increment(incrementBy: number, invocation: CustomFunctions.StreamingInvocation<number>): void {
 //   let result = 0;
 //   const timer = setInterval(() => {
