@@ -1,0 +1,65 @@
+{
+    "functions": [
+        {
+            "description": "Increments a value once a second.",
+            "id": "INCREMENT",
+            "name": "INCREMENT",
+            "options": {
+                "stream": true
+            },
+            "parameters": [
+                {
+                    "description": "Amount to increment",
+                    "name": "incrementBy",
+                    "type": "number"
+                }
+            ],
+            "result": {
+                "type": "number"
+            }
+        },
+        {
+            "description": "Sends a query request to the http server and returns the .response.",
+            "id": "QUERY",
+            "name": "QUERY",
+            "parameters": [
+                {
+                    "description": "User's username",
+                    "name": "id",
+                    "type": "string"
+                },
+                {
+                    "description": "boolean representing whether to used cached query results",
+                    "name": "cache",
+                    "type": "boolean"
+                },
+                {
+                    "description": "User's password",
+                    "name": "args",
+                    "repeating": true,
+                    "type": "string"
+                }
+            ],
+            "result": {
+                "dimensionality": "matrix",
+                "type": "string"
+            }
+        },
+        {
+            "description": "Sends a get query prompts request to the http server and returnes the response.",
+            "id": "GET_QUERY_PROMPTS",
+            "name": "GET_QUERY_PROMPTS",
+            "parameters": [
+                {
+                    "description": "User's username",
+                    "name": "id",
+                    "type": "string"
+                }
+            ],
+            "result": {
+                "dimensionality": "matrix",
+                "type": "string"
+            }
+        }
+    ]
+}
