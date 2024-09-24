@@ -6,17 +6,17 @@
             "name": "QUERY",
             "parameters": [
                 {
-                    "description": "User's username",
+                    "description": "Query ID",
                     "name": "id",
                     "type": "string"
                 },
                 {
-                    "description": "boolean representing whether to used cached query results",
+                    "description": "Boolean representing whether to used cached query results",
                     "name": "cache",
                     "type": "boolean"
                 },
                 {
-                    "description": "User's password",
+                    "description": "Query arguments",
                     "name": "args",
                     "repeating": true,
                     "type": "string"
@@ -33,7 +33,7 @@
             "name": "GET_QUERY_PROMPTS",
             "parameters": [
                 {
-                    "description": "User's username",
+                    "description": "Query ID",
                     "name": "id",
                     "type": "string"
                 }
