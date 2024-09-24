@@ -1,7 +1,7 @@
 {
     "functions": [
         {
-            "description": "Sends a query request to the http server and returns the response.",
+            "description": "Sends a query request to the http server and returns the .response.",
             "id": "QUERY",
             "name": "QUERY",
             "parameters": [
