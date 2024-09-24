@@ -63,9 +63,9 @@ import * as reqres from "./reqres";
 /**
  * Sends a query request to the http server and returns the .response.
  * @customfunction QUERY
- * @param id User's username
- * @param cache boolean representing whether to used cached query results
- * @param {string[]} args User's password
+ * @param id Query ID 
+ * @param cache Boolean representing whether to used cached query results
+ * @param {string[]} args Query arguments
  * @returns {string[][]} number spill array representing the return data of of the query or an error message
  */
 
@@ -93,7 +93,8 @@ export async function query(id: string, cache: boolean, args: string[]) {
   if (!response.ok) {
     console.log("err ${response.status}");
     //not actually sure what happens on the excel side if an error is thrown
-    throw new Error(`HTTP error! status: ${response.status}`);
+    // throw new Error(`HTTP error! status: ${response.status}`);
+    return [[response.statusText]];
   }
 
   console.log("server responded");
@@ -137,7 +138,7 @@ export async function query(id: string, cache: boolean, args: string[]) {
 /**
  * Sends a get query prompts request to the http server and returnes the response.
  * @customfunction GET_QUERY_PROMPTS
- * @param id User's username
+ * @param id Query ID
  * @returns {string[][]} number spill array representing the return data of of the query or an error message
  */
 export async function get_query_prompts(id: string) {
